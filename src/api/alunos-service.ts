@@ -6,19 +6,19 @@ export async function getAlunos() {
   return data;
 }
 
-export async function getAluno(id: string) {
+export async function getAluno(id: number) {
   const { data } = await api.get<Aluno>(`/alunos/${id}`);
   return data;
 }
 
-export async function createAluno(data: Aluno) {
-  await api.post("/alunos", data);
+export async function createAluno(body: Aluno) {
+  await api.post("/alunos", body);
 }
 
-export async function updateAluno(data: Aluno, id: string) {
-  await api.put(`/alunos/${id}`, data);
+export async function updateAluno(body: Aluno, id: number) {
+  await api.put(`/alunos/${id}`, body);
 }
 
-export async function deleteAluno(id: string) {
+export async function deleteAluno(id: number) {
   await api.delete(`/alunos/${id}`);
 }

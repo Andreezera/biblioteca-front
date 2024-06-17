@@ -1,7 +1,9 @@
-import RequireAuth from "@auth-kit/react-router/RequireAuth";
 import { createBrowserRouter } from "react-router-dom";
+import { AlunosPage } from "./pages/alunos";
 import { HomePage } from "./pages/home";
+import { LivrosPage } from "./pages/livros";
 import { LoginPage } from "./pages/login";
+import { ProfessoresPage } from "./pages/professores";
 
 export const router = createBrowserRouter([
   {
@@ -10,11 +12,18 @@ export const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: (
-      <RequireAuth fallbackPath={"/login"}>
-        <HomePage />
-      </RequireAuth>
-    ),
-    children: [],
+    element: <HomePage />,
+  },
+  {
+    path: "/professores/:id",
+    element: <ProfessoresPage />,
+  },
+  {
+    path: "/alunos/:id",
+    element: <AlunosPage />,
+  },
+  {
+    path: "/livros/:id",
+    element: <LivrosPage />,
   },
 ]);

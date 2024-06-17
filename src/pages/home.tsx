@@ -18,7 +18,6 @@ import {
 } from "@nextui-org/react";
 import { LogOut, Square, User } from "lucide-react";
 import React from "react";
-import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useNavigate } from "react-router-dom";
 
 type TabKey =
@@ -83,7 +82,6 @@ const tabs: TabItem[] = [
 ];
 
 export function HomePage() {
-  const signOut = useSignOut();
   const navigate = useNavigate();
 
   return (
@@ -95,9 +93,8 @@ export function HomePage() {
         <NavbarContent justify="end">
           <NavbarItem>
             <Button
-              onClick={() => {
-                signOut();
-                navigate(0);
+              onPress={() => {
+                navigate("/login");
               }}
               isIconOnly
               color="danger"

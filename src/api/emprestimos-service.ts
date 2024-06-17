@@ -6,17 +6,17 @@ export async function getEmprestimos() {
   return data;
 }
 
-export async function getClienteEmprestimo(clientId: string) {
+export async function getClienteEmprestimo(clientId: number) {
   const { data } = await api.get<Emprestimo>(
     `/emprestimos/cliente/${clientId}`
   );
   return data;
 }
 
-export async function createEmprestimo(data: Emprestimo) {
-  await api.post("/emprestimos", data);
+export async function createEmprestimo(body: Emprestimo) {
+  await api.post("/emprestimos", body);
 }
 
-export async function devolverEmprestimo(id: string) {
+export async function devolverEmprestimo(id: number) {
   await api.put(`/emprestimos/${id}/devolver`);
 }

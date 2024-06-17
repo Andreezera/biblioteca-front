@@ -1,11 +1,9 @@
 export interface Aluno {
-  id: string
-  cpf: string;
-  email: string;
-  nome: string;
-  telefone: number;
-  curso: number;
-  ra: number;
-  departamento: string;
-  rp: number;
+  id?: number
+  nome?: string;
+  email?: string;
+  cpf?: string;
+  telefone?: number;
+  ra?: number;
+  curso?: string;
 }

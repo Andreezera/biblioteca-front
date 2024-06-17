@@ -1,8 +1,8 @@
 import { Aluno } from "./aluno";
-import { Exemplar } from "./extemplar";
+import { Exemplar } from "./exemplar";
 
 export interface Emprestimo {
-  id: string
+  id: number
   dataEmprestimo: string;
   dataDevolucao: string;
   dataPrevistaDevolucao: string;

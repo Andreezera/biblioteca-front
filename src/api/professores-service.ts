@@ -6,19 +6,19 @@ export async function getProfessores() {
   return data;
 }
 
-export async function getProfessor(id: string) {
+export async function getProfessor(id: number) {
   const { data } = await api.get<Professor>(`/professores/${id}`);
   return data;
 }
 
-export async function createProfessor(data: Professor) {
-  await api.post("/professores", data);
+export async function createProfessor(body: Professor) {
+  await api.post("/professores", body);
 }
 
-export async function updateProfessor(data: Professor, id: string) {
-  await api.put(`/professores/${id}`, data);
+export async function updateProfessor(body: Professor, id: number) {
+  await api.put(`/professores/${id}`, body);
 }
 
-export async function deleteProfessor(id: string) {
+export async function deleteProfessor(id: number) {
   await api.delete(`/professores/${id}`);
 }

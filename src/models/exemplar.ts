@@ -1,6 +1,6 @@
 import { Livro } from "./livro";
 
 export interface Exemplar {
-  id: string
+  id: number
   livro: Livro;
 }
