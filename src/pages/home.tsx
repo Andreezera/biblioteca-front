@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import { logout } from "@/api/auth-service";
 import { AlunosTab } from "@/components/tabs/alunos-tab";
 import { AutoresTab } from "@/components/tabs/autores-tab";
 import { CategoriasTab } from "@/components/tabs/categorias-tab";
@@ -16,7 +17,17 @@ import {
   Tab,
   Tabs,
 } from "@nextui-org/react";
-import { Book, Building, GraduationCap, LibraryBig, LogOut, NotebookPen, Square, Stamp, User } from "lucide-react";
+import {
+  Book,
+  Building,
+  GraduationCap,
+  LibraryBig,
+  LogOut,
+  NotebookPen,
+  Square,
+  Stamp,
+  User,
+} from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -84,6 +95,11 @@ const tabs: TabItem[] = [
 export function HomePage() {
   const navigate = useNavigate();
 
+  function handleLogout() {
+    logout();
+    navigate("/login");
+  }
+
   return (
     <>
       <Navbar maxWidth="2xl">
@@ -93,9 +109,7 @@ export function HomePage() {
         <NavbarContent justify="end">
           <NavbarItem>
             <Button
-              onPress={() => {
-                navigate("/login");
-              }}
+              onPress={() => handleLogout()}
               isIconOnly
               color="danger"
               variant="flat"

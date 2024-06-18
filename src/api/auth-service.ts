@@ -1,4 +1,5 @@
 import { api } from "@/lib/axios";
+import { jwtDecode } from "jwt-decode";
 
 export async function login(body: { email: string; password: string }) {
   const { data } = await api.post<{ token: string }>("/auth/login", body);
@@ -25,4 +26,20 @@ export function setToken(userToken: string) {
 export function getToken() {
   const tokenString = sessionStorage.getItem("token");
   return tokenString;
+}
+
+export function isAuthenticate() {
+  const token = getToken();
+
+  if (!token) {
+    return false;
+  }
+
+  try {
+    const decodedToken = jwtDecode(token);
+    const currentTime = Date.now() / 1000;
+    return decodedToken.exp && decodedToken.exp > currentTime;
+  } catch (error) {
+    return false;
+  }
 }

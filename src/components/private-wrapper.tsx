@@ -1,8 +1,6 @@
-import { getToken } from "@/api/auth-service";
+import { isAuthenticate } from "@/api/auth-service";
 import { Navigate, Outlet } from "react-router-dom";
 
 export function PrivateWrapper() {
-  const token = getToken();
-
-  return token ? <Outlet /> : <Navigate to="/login" />;
+  return isAuthenticate() ? <Outlet /> : <Navigate to="/login" />;
 }
