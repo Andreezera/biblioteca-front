@@ -23,10 +23,10 @@ import {
   GraduationCap,
   LibraryBig,
   LogOut,
+  LucideBookOpenText,
   NotebookPen,
-  Square,
   Stamp,
-  User,
+  User
 } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -104,7 +104,7 @@ export function HomePage() {
     <>
       <Navbar maxWidth="2xl">
         <NavbarBrand>
-          <Square />
+          <LucideBookOpenText />
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarItem>
