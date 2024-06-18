@@ -75,14 +75,14 @@ export function EmprestimosTable() {
               <TableCell>{dataEmprestimo}</TableCell>
               <TableCell>{dataPrevistaDevolucao}</TableCell>
               <TableCell>{dataDevolucao}</TableCell>
-              <TableCell>
+              <TableCell width="50">
                 {foiDevolvido ? (
                   <Check className="size-4" />
                 ) : (
                   <X className="size-4" />
                 )}
               </TableCell>
-              <TableCell>
+              <TableCell width="50">
                 {!foiDevolvido && id && (
                   <Button
                     onPress={() => handleGiveBack(id)}
