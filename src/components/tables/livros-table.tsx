@@ -87,7 +87,7 @@ export function LivrosTable() {
 
   return (
     <>
-      <Table aria-label="Table">
+      <Table removeWrapper aria-label="Table">
         <TableHeader>
           <TableColumn>Nome</TableColumn>
           <TableColumn>Ano</TableColumn>

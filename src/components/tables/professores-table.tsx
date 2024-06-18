@@ -53,7 +53,7 @@ export function ProfessoresTable() {
   }
 
   return (
-    <Table aria-label="Table">
+    <Table removeWrapper aria-label="Table">
       <TableHeader>
         <TableColumn>RP</TableColumn>
         <TableColumn>Nome</TableColumn>

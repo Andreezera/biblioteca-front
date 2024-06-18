@@ -53,7 +53,7 @@ export function AlunosTable() {
   }
 
   return (
-    <Table aria-label="Table">
+    <Table removeWrapper aria-label="Table">
       <TableHeader>
         <TableColumn>RA</TableColumn>
         <TableColumn>Nome</TableColumn>

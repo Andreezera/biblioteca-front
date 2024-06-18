@@ -32,7 +32,7 @@ export function AutoresTable() {
   }
 
   return (
-    <Table aria-label="Table">
+    <Table removeWrapper aria-label="Table">
       <TableHeader>
         <TableColumn>Código</TableColumn>
         <TableColumn>Nome</TableColumn>

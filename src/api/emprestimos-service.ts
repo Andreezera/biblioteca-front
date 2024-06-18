@@ -1,8 +1,12 @@
 import { api } from "@/lib/axios";
 import { Emprestimo } from "@/models/emprestimo";
 
-export async function getEmprestimos() {
-  const { data } = await api.get<Emprestimo[]>("/emprestimos");
+export type GetEmprestimosParams = { atrasado?: boolean; ativo?: boolean };
+
+export async function getEmprestimos(params?: GetEmprestimosParams) {
+  const { data } = await api.get<Emprestimo[]>("/emprestimos", {
+    params,
+  });
   return data;
 }
 

@@ -1,4 +1,9 @@
-import { Button, Card, CardBody, CardHeader } from "@nextui-org/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader
+} from "@nextui-org/react";
 import { PlusCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { EmprestimosTable } from "../tables/emprestimos-table";
