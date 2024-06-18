@@ -79,8 +79,8 @@ export function EmprestimosTable() {
       <Table removeWrapper aria-label="Table">
         <TableHeader>
           <TableColumn>Cliente</TableColumn>
-          <TableColumn>Livro</TableColumn>
           <TableColumn>Cod Exemplar</TableColumn>
+          <TableColumn>Livro</TableColumn>
           <TableColumn>Data Empréstimo</TableColumn>
           <TableColumn>Data Prevista Devolução</TableColumn>
           <TableColumn>Data Devolução</TableColumn>
@@ -100,8 +100,8 @@ export function EmprestimosTable() {
             }) => (
               <TableRow key={id}>
                 <TableCell>{cliente?.nome}</TableCell>
+                <TableCell className="text-center">{exemplar?.id}</TableCell>
                 <TableCell>{exemplar?.livro.nome}</TableCell>
-                <TableCell>{exemplar?.id}</TableCell>
                 <TableCell>{dataEmprestimo}</TableCell>
                 <TableCell
                   className={cn({
