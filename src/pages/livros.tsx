@@ -117,16 +117,19 @@ export function LivrosPage() {
                 />
                 <Select
                   label="Autor"
-                  onChange={(e) => onChangeValue(e.target.value, "autor")}
+                  selectedKeys={[formData.idAutor?.toString() ?? ""]}
+                  onChange={(e) => onChangeValue(e.target.value, "idAutor")}
                   disabled={isLoading}
                 >
                   {data.autores.map(({ id, nome }) => (
-                    <SelectItem key={id}>{nome}</SelectItem>
+                    <SelectItem key={id.toString()}>{nome}</SelectItem>
                   ))}
                 </Select>
                 <Select
                   label="Categoria"
-                  onChange={(e) => onChangeValue(e.target.value, "categoria")}
+                  selectedKeys={[formData.idCategoria?.toString() ?? ""]}
+                  value={formData.idCategoria?.toString()}
+                  onChange={(e) => onChangeValue(e.target.value, "idCategoria")}
                   disabled={isLoading}
                 >
                   {data.categorias.map(({ id, nome }) => (
@@ -135,7 +138,9 @@ export function LivrosPage() {
                 </Select>
                 <Select
                   label="Editora"
-                  onChange={(e) => onChangeValue(e.target.value, "editora")}
+                  selectedKeys={[formData.idEditora?.toString() ?? ""]}
+                  value={formData.idEditora?.toString()}
+                  onChange={(e) => onChangeValue(e.target.value, "idEditora")}
                   disabled={isLoading}
                 >
                   {data.editoras.map(({ id, nome }) => (

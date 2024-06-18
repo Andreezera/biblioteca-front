@@ -26,4 +26,8 @@ export const router = createBrowserRouter([
     path: "/livros/:id",
     element: <LivrosPage />,
   },
+  {
+    path: "/emprestimos/:id",
+    element: <LivrosPage />,
+  },
 ]);
