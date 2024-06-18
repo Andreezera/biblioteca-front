@@ -48,12 +48,14 @@ export function EmprestimosTable() {
   return (
     <Table aria-label="Table">
       <TableHeader>
+        <TableColumn>Cliente</TableColumn>
         <TableColumn>Livro</TableColumn>
-        <TableColumn>Autor</TableColumn>
+        <TableColumn>Cod Exemplar</TableColumn>
         <TableColumn>Data Empréstimo</TableColumn>
         <TableColumn>Data Prevista Devolução</TableColumn>
         <TableColumn>Data Devolução</TableColumn>
         <TableColumn>Devolvido</TableColumn>
+        <TableColumn></TableColumn>
       </TableHeader>
       <TableBody>
         {data.map(
@@ -67,8 +69,9 @@ export function EmprestimosTable() {
             foiDevolvido,
           }) => (
             <TableRow key={id}>
-              <TableCell>{exemplar.livro.nome}</TableCell>
               <TableCell>{cliente.nome}</TableCell>
+              <TableCell>{exemplar.livro.nome}</TableCell>
+              <TableCell>{exemplar.id}</TableCell>
               <TableCell>{dataEmprestimo}</TableCell>
               <TableCell>{dataPrevistaDevolucao}</TableCell>
               <TableCell>{dataDevolucao}</TableCell>
