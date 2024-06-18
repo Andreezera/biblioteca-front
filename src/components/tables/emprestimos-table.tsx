@@ -77,9 +77,9 @@ export function EmprestimosTable() {
               <TableCell>{dataDevolucao}</TableCell>
               <TableCell width="50">
                 {foiDevolvido ? (
-                  <Check className="size-4" />
+                  <Check className="size-4 mx-auto" />
                 ) : (
-                  <X className="size-4" />
+                  <X className="size-4 mx-auto" />
                 )}
               </TableCell>
               <TableCell width="50">
