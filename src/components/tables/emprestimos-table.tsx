@@ -55,7 +55,7 @@ export function EmprestimosTable() {
         <TableColumn>Data Prevista Devolução</TableColumn>
         <TableColumn>Data Devolução</TableColumn>
         <TableColumn>Devolvido</TableColumn>
-        <TableColumn></TableColumn>
+        <TableColumn> </TableColumn>
       </TableHeader>
       <TableBody>
         {data.map(
