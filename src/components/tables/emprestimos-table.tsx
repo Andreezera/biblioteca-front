@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
-import { HandCoins, Loader2 } from "lucide-react";
+import { Loader2, Stamp } from "lucide-react";
 import * as React from "react";
 import toast from "react-hot-toast";
 
@@ -81,7 +81,7 @@ export function EmprestimosTable() {
                   size="sm"
                   disabled={isLoading}
                 >
-                  <HandCoins className="size-4" />
+                  <Stamp className="size-4" />
                 </Button>
               </TableCell>
             </TableRow>

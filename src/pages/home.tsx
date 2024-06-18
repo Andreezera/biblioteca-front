@@ -16,7 +16,7 @@ import {
   Tab,
   Tabs,
 } from "@nextui-org/react";
-import { LogOut, Square, User } from "lucide-react";
+import { Book, Building, GraduationCap, LibraryBig, LogOut, NotebookPen, Square, Stamp, User } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -41,19 +41,19 @@ const tabs: TabItem[] = [
     key: "emprestimos",
     title: "Empréstimos",
     component: <EmprestimosTab />,
-    icon: <User className="size-4" />,
+    icon: <Stamp className="size-4" />,
   },
   {
     key: "livros",
     title: "Livros",
     component: <LivrosTab />,
-    icon: <User className="size-4" />,
+    icon: <Book className="size-4" />,
   },
   {
     key: "alunos",
     title: "Alunos",
     component: <AlunosTab />,
-    icon: <User className="size-4" />,
+    icon: <GraduationCap className="size-4" />,
   },
   {
     key: "professores",
@@ -65,19 +65,19 @@ const tabs: TabItem[] = [
     key: "autores",
     title: "Autores",
     component: <AutoresTab />,
-    icon: <User className="size-4" />,
+    icon: <NotebookPen className="size-4" />,
   },
   {
     key: "categorias",
     title: "Categorias",
     component: <CategoriasTab />,
-    icon: <User className="size-4" />,
+    icon: <LibraryBig className="size-4" />,
   },
   {
     key: "editoras",
     title: "Editoras",
     component: <EditorasTab />,
-    icon: <User className="size-4" />,
+    icon: <Building className="size-4" />,
   },
 ];
 

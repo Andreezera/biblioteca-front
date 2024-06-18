@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
-import { Edit2, Loader2, Plus, Trash } from "lucide-react";
+import { Edit2, Loader2, Minus, Plus, Trash } from "lucide-react";
 import React from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -117,7 +117,7 @@ export function LivrosTable() {
                         size="sm"
                         disabled={isLoading}
                       >
-                        <Plus className="size-4" />
+                        <Minus className="size-4" />
                       </Button>
                       <Button
                         onPress={() =>
