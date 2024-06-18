@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
-import { Loader2, Stamp } from "lucide-react";
+import { Check, Loader2, Stamp, X } from "lucide-react";
 import * as React from "react";
 import toast from "react-hot-toast";
 
@@ -75,17 +75,25 @@ export function EmprestimosTable() {
               <TableCell>{dataEmprestimo}</TableCell>
               <TableCell>{dataPrevistaDevolucao}</TableCell>
               <TableCell>{dataDevolucao}</TableCell>
-              <TableCell>{foiDevolvido}</TableCell>
               <TableCell>
-                <Button
-                  onPress={() => handleGiveBack(id)}
-                  isIconOnly
-                  variant="flat"
-                  size="sm"
-                  disabled={isLoading}
-                >
-                  <Stamp className="size-4" />
-                </Button>
+                {foiDevolvido ? (
+                  <Check className="size-4" />
+                ) : (
+                  <X className="size-4" />
+                )}
+              </TableCell>
+              <TableCell>
+                {!foiDevolvido && (
+                  <Button
+                    onPress={() => handleGiveBack(id)}
+                    isIconOnly
+                    variant="flat"
+                    size="sm"
+                    disabled={isLoading}
+                  >
+                    <Stamp className="size-4" />
+                  </Button>
+                )}
               </TableCell>
             </TableRow>
           )

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { PrivateWrapper } from "./components/private-wrapper";
 import { AlunosPage } from "./pages/alunos";
 import { HomePage } from "./pages/home";
 import { LivrosPage } from "./pages/livros";
@@ -11,23 +12,28 @@ export const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/professores/:id",
-    element: <ProfessoresPage />,
-  },
-  {
-    path: "/alunos/:id",
-    element: <AlunosPage />,
-  },
-  {
-    path: "/livros/:id",
-    element: <LivrosPage />,
-  },
-  {
-    path: "/emprestimos/:id",
-    element: <LivrosPage />,
+    element: <PrivateWrapper />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/professores/:id",
+        element: <ProfessoresPage />,
+      },
+      {
+        path: "/alunos/:id",
+        element: <AlunosPage />,
+      },
+      {
+        path: "/livros/:id",
+        element: <LivrosPage />,
+      },
+      {
+        path: "/emprestimos/:id",
+        element: <LivrosPage />,
+      },
+    ],
   },
 ]);
