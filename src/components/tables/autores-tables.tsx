@@ -13,7 +13,7 @@ import * as React from "react";
 
 export function AutoresTable() {
   const [data, setData] = React.useState<Autor[]>([]);
-  const [isFetching, setIsFetching] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     fetchData();
@@ -21,6 +21,7 @@ export function AutoresTable() {
 
   function fetchData() {
     setIsFetching(true);
+
     getAutores()
       .then(setData)
       .finally(() => setIsFetching(false));

@@ -1,4 +1,5 @@
 import { api } from "@/lib/axios";
+import { Exemplar } from "@/models/exemplar";
 import { Livro } from "@/models/livro";
 
 export async function getLivros() {
@@ -23,13 +24,14 @@ export async function deleteLivro(id: number) {
   await api.delete(`/livros/${id}`);
 }
 
+export async function getExemplares() {
+  const { data } = await api.get<Exemplar[]>("/livros/exemplares");
+  return data;
+}
+
 export async function addExemplar(body: {
-  livroId: number;
+  idLivro: number;
   quantidade: number;
 }) {
   await api.post("/livros/exemplares", body);
-}
-
-export async function removeExemplar(id: number) {
-  await api.delete(`/livros/exemplares/${id}`);
 }

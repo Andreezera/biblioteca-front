@@ -5,6 +5,7 @@ import { HomePage } from "./pages/home";
 import { LivrosPage } from "./pages/livros";
 import { LoginPage } from "./pages/login";
 import { ProfessoresPage } from "./pages/professores";
+import { EmprestimosPage } from "./pages/emprestimos";
 
 export const router = createBrowserRouter([
   {
@@ -31,8 +32,8 @@ export const router = createBrowserRouter([
         element: <LivrosPage />,
       },
       {
-        path: "/emprestimos/:id",
-        element: <LivrosPage />,
+        path: "/emprestimos",
+        element: <EmprestimosPage />,
       },
     ],
   },

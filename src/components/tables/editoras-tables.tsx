@@ -13,7 +13,7 @@ import * as React from "react";
 
 export function EditorasTable() {
   const [data, setData] = React.useState<Editora[]>([]);
-  const [isFetching, setIsFetching] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     fetchData();

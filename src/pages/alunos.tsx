@@ -69,6 +69,7 @@ export function AlunosPage() {
               <div className="flex flex-col gap-y-5">
                 <Input
                   label="Nome"
+                  isRequired
                   value={formData.nome}
                   onChange={(e) => onChangeValue(e.target.value, "nome")}
                   disabled={isLoading}
@@ -76,34 +77,37 @@ export function AlunosPage() {
                 <Input
                   type="email"
                   label="Email"
+                  isRequired
                   value={formData.email}
                   onChange={(e) => onChangeValue(e.target.value, "email")}
                   disabled={isLoading}
                 />
                 <Input
                   label="CPF"
+                  isRequired
                   value={formData.cpf}
                   onChange={(e) => onChangeValue(e.target.value, "cpf")}
                   disabled={isLoading}
                 />
                 <Input
                   label="Telefone"
+                  isRequired
                   value={formData.telefone?.toString()}
                   onChange={(e) => onChangeValue(e.target.value, "telefone")}
                   disabled={isLoading}
                 />
                 <Input
                   label="RP"
+                  isRequired
                   value={formData.ra?.toString()}
                   onChange={(e) => onChangeValue(e.target.value, "ra")}
                   disabled={isLoading}
                 />
                 <Input
                   label="Departamento"
+                  isRequired
                   value={formData.curso}
-                  onChange={(e) =>
-                    onChangeValue(e.target.value, "curso")
-                  }
+                  onChange={(e) => onChangeValue(e.target.value, "curso")}
                   disabled={isLoading}
                 />
               </div>

@@ -14,7 +14,7 @@ export async function getClienteEmprestimo(clientId: number) {
 }
 
 export async function createEmprestimo(body: Emprestimo) {
-  await api.post("/emprestimos", body);
+  await api.post("/emprestimos/cadastrar", body);
 }
 
 export async function devolverEmprestimo(id: number) {

@@ -18,8 +18,8 @@ export function ProfessoresTable() {
   const navigate = useNavigate();
 
   const [data, setData] = React.useState<Professor[]>([]);
-  const [isFetching, setIsFetching] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [currentId, setCurrentId] = React.useState<number | null>(null);
 
   React.useEffect(() => fetchData(), []);
@@ -63,10 +63,10 @@ export function ProfessoresTable() {
       <TableBody>
         {data.map(({ id, nome, rp, email }) => (
           <TableRow key={id}>
-            <TableCell>{rp}</TableCell>
+            <TableCell width="50">{rp}</TableCell>
             <TableCell>{nome}</TableCell>
             <TableCell>{email}</TableCell>
-            <TableCell>
+            <TableCell width="50">
               {id && (
                 <div className="flex items-center gap-2">
                   <Button

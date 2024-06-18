@@ -13,7 +13,7 @@ import * as React from "react";
 
 export function CategoriasTable() {
   const [data, setData] = React.useState<Categoria[]>([]);
-  const [isFetching, setIsFetching] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     fetchData();

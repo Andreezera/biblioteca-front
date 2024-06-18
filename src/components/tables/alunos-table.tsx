@@ -18,8 +18,8 @@ export function AlunosTable() {
   const navigate = useNavigate();
 
   const [data, setData] = React.useState<Aluno[]>([]);
-  const [isFetching, setIsFetching] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [currentId, setCurrentId] = React.useState<number | null>(null);
 
   React.useEffect(() => fetchData(), []);
@@ -63,10 +63,10 @@ export function AlunosTable() {
       <TableBody>
         {data.map(({ id, nome, email, ra }) => (
           <TableRow key={id}>
-            <TableCell>{ra}</TableCell>
+            <TableCell width="50">{ra}</TableCell>
             <TableCell>{nome}</TableCell>
             <TableCell>{email}</TableCell>
-            <TableCell>
+            <TableCell width="50">
               {id && (
                 <div className="flex items-center gap-2">
                   <Button

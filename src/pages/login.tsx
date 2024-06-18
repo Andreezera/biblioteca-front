@@ -53,7 +53,6 @@ export function LoginPage() {
             aria-label="Tabs"
             selectedKey={selected as string}
             onSelectionChange={setSelected}
-            variant="underlined"
           >
             <Tab key="login" title="Entrar">
               <form
@@ -80,7 +79,7 @@ export function LoginPage() {
                 </div>
               </form>
             </Tab>
-            {/* <Tab key="sign-up" title="Cadastre-se">
+            <Tab key="sign-up" title="Cadastre-se">
               <form
                 onSubmit={handleSubmitSignUp}
                 className="flex flex-col gap-4 h-[300px]"
@@ -105,7 +104,7 @@ export function LoginPage() {
                   </Button>
                 </div>
               </form>
-            </Tab> */}
+            </Tab>
           </Tabs>
         </CardBody>
       </Card>

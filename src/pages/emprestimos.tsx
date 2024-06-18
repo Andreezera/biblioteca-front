@@ -1,39 +1,54 @@
-import { createProfessor, getProfessor, updateProfessor } from "@/api/professores-service";
-import { Professor } from "@/models/professor";
+import { getClientes } from "@/api/clientes-service";
+import { createEmprestimo } from "@/api/emprestimos-service";
+import { getExemplares } from "@/api/livros-service";
+import { Cliente } from "@/models/cliente";
+import { Emprestimo } from "@/models/emprestimo";
+import { Exemplar } from "@/models/exemplar";
+import { getLocalTimeZone, today } from "@internationalized/date";
 import {
   Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Input,
+  DatePicker,
+  Select,
+  SelectItem,
 } from "@nextui-org/react";
 import React from "react";
 import toast from "react-hot-toast";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+interface DataState {
+  exemplares: Exemplar[];
+  clientes: Cliente[];
+}
 
 export function EmprestimosPage() {
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
 
-  const [formData, setFormData] = React.useState<Professor>({});
+  const [formData, setFormData] = React.useState<Emprestimo>({});
+  const [data, setData] = React.useState<DataState>({
+    exemplares: [],
+    clientes: [],
+  });
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const isNew = id === "novo";
 
   React.useEffect(() => {
-    function fetchData() {
+    function fetchDropdownData() {
       setIsLoading(true);
 
-      getProfessor(Number(id))
-        .then((data) => setFormData(data))
-        .catch(() => toast.error("Erro ao buscar o professor!"))
+      Promise.all([getExemplares(), getClientes()])
+        .then(([exemplares, clientes]) => {
+          setData({ exemplares, clientes });
+        })
         .finally(() => setIsLoading(false));
     }
 
-    !isNew && fetchData();
-  }, [id, isNew]);
+    fetchDropdownData();
+  }, []);
 
-  function onChangeValue(value: string, key: keyof Professor) {
+  function onChangeValue(value: string, key: keyof Emprestimo) {
     setFormData((prev) => ({ ...prev, [key]: value }));
   }
 
@@ -41,17 +56,13 @@ export function EmprestimosPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    const action = isNew
-      ? createProfessor(formData)
-      : updateProfessor(formData, Number(id));
-
-    action
+    createEmprestimo(formData)
       .then(() => {
-        toast.success("Professor salvo com sucesso!");
+        toast.success("Empréstimo salvo com sucesso!");
         setFormData({});
         navigate("/");
       })
-      .catch(() => toast.error("Erro ao salvar professor!"))
+      .catch(() => toast.error("Erro ao salvar empréstimo!"))
       .finally(() => setIsLoading(false));
   }
 
@@ -64,48 +75,36 @@ export function EmprestimosPage() {
       <div className="container">
         <form onSubmit={handleSubmit}>
           <Card className="max-w-full">
-            <CardHeader>{isNew ? "Novo" : "Editar"} Professor</CardHeader>
+            <CardHeader>Novo Emprestimo</CardHeader>
             <CardBody className="overflow-hidden">
               <div className="flex flex-col gap-y-5">
-                <Input
-                  label="Nome"
-                  value={formData.nome}
-                  onChange={(e) => onChangeValue(e.target.value, "nome")}
-                  disabled={isLoading}
+                <DatePicker
+                  label="Data de Devolução"
+                  onChange={(e) => onChangeValue(e.toString(), "dataDevolucao")}
+                  isRequired
+                  minValue={today(getLocalTimeZone())}
+                  isDisabled={isLoading}
                 />
-                <Input
-                  type="email"
-                  label="Email"
-                  value={formData.email}
-                  onChange={(e) => onChangeValue(e.target.value, "email")}
+                <Select
+                  label="Exemplar"
+                  isRequired
+                  onChange={(e) => onChangeValue(e.target.value, "exemplarId")}
                   disabled={isLoading}
-                />
-                <Input
-                  label="CPF"
-                  value={formData.cpf}
-                  onChange={(e) => onChangeValue(e.target.value, "cpf")}
+                >
+                  {data.exemplares.map(({ id, livro }) => (
+                    <SelectItem key={id}>{`[#${id}] ${livro.nome}`}</SelectItem>
+                  ))}
+                </Select>
+                <Select
+                  label="Cliente"
+                  isRequired
+                  onChange={(e) => onChangeValue(e.target.value, "idCliente")}
                   disabled={isLoading}
-                />
-                <Input
-                  label="Telefone"
-                  value={formData.telefone?.toString()}
-                  onChange={(e) => onChangeValue(e.target.value, "telefone")}
-                  disabled={isLoading}
-                />
-                <Input
-                  label="RP"
-                  value={formData.rp?.toString()}
-                  onChange={(e) => onChangeValue(e.target.value, "rp")}
-                  disabled={isLoading}
-                />
-                <Input
-                  label="Departamento"
-                  value={formData.departamento}
-                  onChange={(e) =>
-                    onChangeValue(e.target.value, "departamento")
-                  }
-                  disabled={isLoading}
-                />
+                >
+                  {data.clientes.map(({ id, nome }) => (
+                    <SelectItem key={id}>{nome}</SelectItem>
+                  ))}
+                </Select>
               </div>
             </CardBody>
             <CardFooter className="gap-2 justify-between">

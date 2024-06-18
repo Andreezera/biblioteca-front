@@ -15,8 +15,8 @@ import toast from "react-hot-toast";
 
 export function EmprestimosTable() {
   const [data, setData] = React.useState<Emprestimo[]>([]);
-  const [isFetching, setIsFetching] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     getEmprestimos().then(setData);
@@ -69,9 +69,9 @@ export function EmprestimosTable() {
             foiDevolvido,
           }) => (
             <TableRow key={id}>
-              <TableCell>{cliente.nome}</TableCell>
-              <TableCell>{exemplar.livro.nome}</TableCell>
-              <TableCell>{exemplar.id}</TableCell>
+              <TableCell>{cliente?.nome}</TableCell>
+              <TableCell>{exemplar?.livro.nome}</TableCell>
+              <TableCell>{exemplar?.id}</TableCell>
               <TableCell>{dataEmprestimo}</TableCell>
               <TableCell>{dataPrevistaDevolucao}</TableCell>
               <TableCell>{dataDevolucao}</TableCell>
@@ -83,7 +83,7 @@ export function EmprestimosTable() {
                 )}
               </TableCell>
               <TableCell>
-                {!foiDevolvido && (
+                {!foiDevolvido && id && (
                   <Button
                     onPress={() => handleGiveBack(id)}
                     isIconOnly

@@ -102,6 +102,7 @@ export function LivrosPage() {
               <div className="flex flex-col gap-y-5">
                 <Input
                   label="Nome"
+                  isRequired
                   value={formData.nome}
                   onChange={(e) => onChangeValue(e.target.value, "nome")}
                   disabled={isLoading}
@@ -109,14 +110,14 @@ export function LivrosPage() {
                 <Input
                   type="number"
                   label="Ano"
+                  isRequired
                   value={formData.ano?.toString()}
                   onChange={(e) => onChangeValue(e.target.value, "ano")}
-                  minLength={4}
-                  maxLength={4}
                   disabled={isLoading}
                 />
                 <Select
                   label="Autor"
+                  isRequired
                   selectedKeys={[formData.idAutor?.toString() ?? ""]}
                   onChange={(e) => onChangeValue(e.target.value, "idAutor")}
                   disabled={isLoading}
@@ -127,6 +128,7 @@ export function LivrosPage() {
                 </Select>
                 <Select
                   label="Categoria"
+                  isRequired
                   selectedKeys={[formData.idCategoria?.toString() ?? ""]}
                   value={formData.idCategoria?.toString()}
                   onChange={(e) => onChangeValue(e.target.value, "idCategoria")}
@@ -138,6 +140,7 @@ export function LivrosPage() {
                 </Select>
                 <Select
                   label="Editora"
+                  isRequired
                   selectedKeys={[formData.idEditora?.toString() ?? ""]}
                   value={formData.idEditora?.toString()}
                   onChange={(e) => onChangeValue(e.target.value, "idEditora")}
