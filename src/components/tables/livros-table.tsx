@@ -107,7 +107,7 @@ export function LivrosTable() {
                 <TableCell>{categoria}</TableCell>
                 <TableCell>{editora}</TableCell>
                 <TableCell>{qtdExemplares}</TableCell>
-                <TableCell>
+                <TableCell width="100">
                   {id && (
                     <div className="flex items-center gap-2">
                       <Button
